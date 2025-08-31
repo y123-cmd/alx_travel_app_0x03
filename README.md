@@ -1,58 +1,41 @@
-# 🏖️ ALX Travel App 0x00
+# 🌍 ALX Travel App 0x03  
 
-This project is a backend service for managing travel listings, bookings, and reviews.  
-It was created as part of the ALX backend learning tasks.  
-Key additions include:
-- Defined database models (`Listing`, `Booking`, `Review`)
-- Implemented serializers for API data representation
-- Management command to seed the database with sample data
+**ALX Travel App** is a Django-based backend service designed for managing **travel listings, bookings, and reviews**, while introducing **real-world background processing** with **Celery** and **RabbitMQ**.  
+
+This version focuses on improving **scalability** by moving heavy tasks (like sending emails) into background workers.  
 
 ---
 
-## ✨ Features
+## 🚀 Why This Project is Different  
 
-✅ **Listings Management**
-- Create and store travel property listings with details like location, price, and description.
-
-✅ **Bookings**
-- Guests can create bookings for listings with check-in/check-out dates and status tracking.
-
-✅ **Reviews**
-- Guests can review completed bookings and leave ratings.
-
-✅ **Seed Command**
-- A management command to populate the database with sample data for quick testing.
+Unlike the earlier versions of the Travel App, this version:  
+✨ Integrates **Celery workers** for asynchronous task handling.  
+✨ Uses **RabbitMQ** as a reliable message broker.  
+✨ Sends **booking confirmation emails** in the background without blocking requests.  
+✨ Demonstrates production-level backend practices.  
 
 ---
 
-## 📂 **Project Structure**
+## 🔑 Core Features  
 
-
----
-
-## ⚙️ **Models**
-
-- **Listing**
-  - `host` (FK to User)
-  - `title`, `description`, `location`
-  - `price_per_night`
-  - Timestamps
-
-- **Booking**
-  - `listing` (FK to Listing)
-  - `guest` (FK to User)
-  - `check_in`, `check_out`, `status`
-
-- **Review**
-  - `booking` (OneToOne FK to Booking)
-  - `reviewer` (FK to User)
-  - `rating`, `comment`
+- **🏘️ Listings** → Manage travel properties with host, title, location, and pricing.  
+- **📅 Bookings** → Guests book listings with check-in/out dates and status tracking.  
+- **⭐ Reviews** → Guests leave ratings and feedback after their stay.  
+- **📧 Email Notifications** → Automatic booking confirmation emails.  
+- **⚡ Background Tasks** → Powered by Celery + RabbitMQ.  
 
 ---
 
-## 📦 **Serializers**
+## 🏗️ Tech Stack  
 
-- `ListingSerializer`: exposes listing fields
-- `BookingSerializer`: exposes booking fields
+- **Framework**: Django & Django REST Framework  
+- **Task Queue**: Celery  
+- **Message Broker**: RabbitMQ  
+- **Database**: SQLite (default, can be swapped with PostgreSQL)  
+- **Containerization**: Docker (optional for RabbitMQ)  
 
 ---
+
+## 📂 Project Layout  
+
+
